@@ -10,27 +10,27 @@ const BORDER_REDIUS = 75;
 const { width } = Dimensions.get("window");
 const slideItems = [
   {
-    title: "Relaxed",
-    subTitle: "hey chey abcabcabcabc",
-    description: "hjfgh assdasda dasd a sa  sd as",
+    title: "JOBS",
+    subTitle: "Job  Postings ",
+    description: "Find Job Sites In Us. Check Out 1000+ Results from Across the Web. 100+ Million Visitors",
     color: "#BFEAF5",
   },
   {
-    title: "Playful",
-    subTitle: "hey ab abab c",
-    description: "uyttyu asdas sdasdasadfdhfgfgg das d",
+    title: "RETAILERS",
+    subTitle: "Retailing at jw.in",
+    description: "Explore vast selection of products from Top Brands. Pay on Delivery",
     color: "#BEECC4",
   },
   {
-    title: "Exentric",
-    subTitle: "hey abcabcabcabc",
-    description: "ewrrer asd asdas sdasda dsadasdas d",
+    title: "BUSINESS",
+    subTitle: "BUSINESS Diaries",
+    description: "Business Diaries Pioneers in the industry, we offer Heritage Diary from India.",
     color: "#FFE4D9",
   },
   {
-    title: "Funky",
-    subTitle: "hey abcabcabbcabc",
-    description: "gfhfgh asdas sdasdfghfgha das d",
+    title: "SERVICE",
+    subTitle: "SERVICE at JW",
+    description: "Business Diaries Pioneers in the industry, we offer Heritage Diary from India.",
     color: "#FFDDDD",
   },
 ];

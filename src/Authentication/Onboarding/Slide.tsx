@@ -10,7 +10,7 @@ const style = StyleSheet.create({
     width,
   },
   title: {
-    fontSize: 80,
+    fontSize: 60,
     fontFamily: "SFProText-Bold",
     color: "white",
     textAlign: "center",
