@@ -1,6 +1,5 @@
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 
-import { BORDER_REDIUS } from "./Onboarding";
 import React from "react";
 
 const { width, height } = Dimensions.get("window");
@@ -29,7 +28,7 @@ const style = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     width: undefined,
     height: undefined,
-    borderBottomRightRadius: BORDER_REDIUS,
+    borderBottomRightRadius: 75,
   },
 });
 interface SlideProps {
