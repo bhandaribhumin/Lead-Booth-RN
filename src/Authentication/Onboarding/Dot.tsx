@@ -1,30 +1,38 @@
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import Animated, { Extrapolate, interpolate } from "react-native-reanimated";
 
-import Animated from "react-native-reanimated";
+import { Dimensions } from "react-native";
 import React from "react";
 
 const { width, height } = Dimensions.get("window");
 export const SLIDER_HEIGHT = 0.61 * height;
 
-const style = StyleSheet.create({
-  container: {
-    width:8,
-    borderRadius:4,
-    height:8,
-    backgroundColor:"#2CB9B0"
-  }
-});
 interface DotProps {
-    index: string;
-    currentIndex:Animated.Node<number>
+  index: number;
+  currentIndex: Animated.Node<number>;
 }
 const Dot = ({ index, currentIndex }: DotProps) => {
-  const transform = [
-   
-  ];
+  const opacity = interpolate(currentIndex, {
+    inputRange: [index - 1, index, index + 1],
+    outputRange: [0.5, 1, 0.5],
+    extrapolate: Extrapolate.CLAMP,
+  });
+  const scale = interpolate(currentIndex, {
+    inputRange: [index - 1, index, index + 1],
+    outputRange: [1, 1.25, 1],
+    extrapolate: Extrapolate.CLAMP,
+  });
   return (
-    <Animated.View style={style.container}>
-    </Animated.View>
+    <Animated.View
+      style={{
+        opacity,
+        width: 8,
+        borderRadius: 4,
+        height: 8,
+        backgroundColor: "#2CB9B0",
+        margin: 4,
+        transform: [{ scale }],
+      }}
+    ></Animated.View>
   );
 };
 
