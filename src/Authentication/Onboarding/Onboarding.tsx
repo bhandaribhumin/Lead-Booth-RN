@@ -12,7 +12,7 @@ import {
 import Dot from "./Dot";
 import SubSlide from "./SubSlide";
 
-const BORDER_REDIUS = 75;
+export const BORDER_REDIUS = 75;
 const { width } = Dimensions.get("window");
 const slideItems = [
   {
@@ -21,6 +21,7 @@ const slideItems = [
     description:
       "Find Job Sites In Us. Check Out 1000+ Results from Across the Web. 100+ Million Visitors",
     color: "#BFEAF5",
+    picture: require("./../../../assets/slide/Job_Search.png"),
   },
   {
     title: "RETAILERS",
@@ -28,6 +29,7 @@ const slideItems = [
     description:
       "Explore vast selection of products from Top Brands. Pay on Delivery",
     color: "#BEECC4",
+    picture: require("./../../../assets/slide/business.png"),
   },
   {
     title: "BUSINESS",
@@ -35,6 +37,7 @@ const slideItems = [
     description:
       "Business Diaries Pioneers in the industry, we offer Heritage Diary from India.",
     color: "#FFE4D9",
+    picture: require("../../../assets/slide/Lead_Generation.png"),
   },
   {
     title: "SERVICE",
@@ -42,6 +45,7 @@ const slideItems = [
     description:
       "Business Diaries Pioneers in the industry, we offer Heritage Diary from India.",
     color: "#FFDDDD",
+    picture: require("../../../assets/slide/service.png"),
   },
 ];
 const Onboarding = () => {
@@ -63,8 +67,8 @@ const Onboarding = () => {
           bounces={false}
           {...scrollHandler}
         >
-          {slideItems.map(({ title }, index) => (
-            <Slide key={index} right={!!(index % 2)} {...{ title }} />
+          {slideItems.map(({ title, picture }, index) => (
+            <Slide key={index} right={!!(index % 2)} {...{ title, picture }} />
           ))}
         </Animated.ScrollView>
       </Animated.View>
@@ -72,11 +76,7 @@ const Onboarding = () => {
         <Animated.View
           style={{ ...StyleSheet.absoluteFillObject, backgroundColor }}
         />
-        <View
-          style={
-            style.footerContent
-          }
-        >
+        <View style={style.footerContent}>
           <View style={[style.pagination]}>
             {console.log(x)}
             {console.log(width)}
@@ -89,28 +89,29 @@ const Onboarding = () => {
             ))}
           </View>
 
-          <Animated.View style={ {
-             width: width * slideItems.length,
+          <Animated.View
+            style={{
+              width: width * slideItems.length,
               flex: 1,
               flexDirection: "row",
               transform: [{ translateX: multiply(x, -1) }],
-            }}>
-                {slideItems.map(({ subTitle, description }, index) => (
-            <SubSlide
-              key={index}
-              onPress={() => {
-                if (scroll.current) {
-                  scroll.current
-                    .getNode()
-                    .scrollTo({ x: width * (index + 1), animated: true });
-                }
-              }}
-              last={index === slideItems.length - 1}
-              {...{ subTitle, description }}
-            />
-          ))}
+            }}
+          >
+            {slideItems.map(({ subTitle, description }, index) => (
+              <SubSlide
+                key={index}
+                onPress={() => {
+                  if (scroll.current) {
+                    scroll.current
+                      .getNode()
+                      .scrollTo({ x: width * (index + 1), animated: true });
+                  }
+                }}
+                last={index === slideItems.length - 1}
+                {...{ subTitle, description }}
+              />
+            ))}
           </Animated.View>
-        
         </View>
       </View>
     </View>
@@ -131,7 +132,7 @@ const style = StyleSheet.create({
     flex: 1,
   },
   footerContent: {
-    flex:1,
+    flex: 1,
     //flexDirection: "row",
     backgroundColor: "white",
     borderTopLeftRadius: BORDER_REDIUS,
@@ -139,8 +140,8 @@ const style = StyleSheet.create({
   pagination: {
     ...StyleSheet.absoluteFillObject,
     height: BORDER_REDIUS,
-    flexDirection:"row",
-   // backgroundColor: "rgba(100,200,300,0.5)",
+    flexDirection: "row",
+    // backgroundColor: "rgba(100,200,300,0.5)",
     justifyContent: "center",
     alignItems: "center",
   },
