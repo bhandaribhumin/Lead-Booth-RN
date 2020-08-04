@@ -1,7 +1,7 @@
 # Lead-Booth-RN
 > install expo-cli and react-native-cli
 > clone repo 
-#install dependences 
+# install dependences 
 > yarn
 # start project
 > yarn start
