@@ -1,4 +1,4 @@
-import { Button, Text } from "../../components";
+import { Button, Text, theme } from "../../components";
 import { Dimensions, StyleSheet, View } from "react-native";
 
 import Animated from "react-native-reanimated";
@@ -12,7 +12,7 @@ const style = StyleSheet.create({
   flex:1,
   justifyContent:"center",
   alignItems:"center",
-  padding:44
+  padding:theme.spacing.xl
   },
   subTitle: {
     textAlign:"center",
@@ -20,7 +20,7 @@ const style = StyleSheet.create({
   },
   description: {
     textAlign:"center",
-    marginBottom:40
+    marginBottom:theme.spacing.m
   },
 });
 interface SubSlideProps {

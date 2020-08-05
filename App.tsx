@@ -1,11 +1,10 @@
 import * as React from 'react';
 
+import { AuthenticationNavigator, assets as authenticationAssets } from './src/Authentication';
 import { LoadAssets, theme } from './src/components';
-import { Onboarding, Welcome, assets as authenticationAssets } from './src/Authentication';
 
-import { Routes } from "./src/components/Navigation";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {ThemeProvider} from '@shopify/restyle';
-import { createStackNavigator } from '@react-navigation/stack';
 
 const assets= [...authenticationAssets]
 const fonts = {
@@ -15,22 +14,13 @@ const fonts = {
   "SFProDisplay-Medium": require("./assets/fonts/SFProDisplay-Medium.ttf")
 };
 
-const AuthenticationStack = createStackNavigator<Routes>();
-const AuthenticationNavigator = () => {
-return(
-<AuthenticationStack.Navigator headerMode="none">
-  <AuthenticationStack.Screen name="Onboarding" component={Onboarding}></AuthenticationStack.Screen>
-  <AuthenticationStack.Screen name="Welcome" component={Welcome}></AuthenticationStack.Screen>
-</AuthenticationStack.Navigator>);
-};
-
-
-
 function App() {
   return (
     <ThemeProvider {...{theme}}>
     <LoadAssets {...{fonts, assets}}>
+      <SafeAreaProvider >
       <AuthenticationNavigator></AuthenticationNavigator>
+      </SafeAreaProvider>
     </LoadAssets>
     </ThemeProvider>
   );

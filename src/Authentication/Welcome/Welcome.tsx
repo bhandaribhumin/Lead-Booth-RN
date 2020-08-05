@@ -1,4 +1,5 @@
 import { Dimensions, Image, StyleSheet } from "react-native";
+import { Routes, StackNavigationProps } from "../../components/Navigation";
 import theme, { Box, Text } from "../../components/Theme";
 
 import { Button } from "../../components";
@@ -11,7 +12,7 @@ const picture = {
   height: 1000,
 };
 export const assets = [picture.src];
-const Welcome = () => {
+const Welcome = ({navigation}:StackNavigationProps<Routes,"Welcome">) => {
   return (
     <Box flex={1} backgroundColor="white">
       <Box
@@ -50,9 +51,9 @@ const Welcome = () => {
             <Text variant="body" textAlign="center">
               Login to your account below or signup for an amazing experience
             </Text>
-            <Button variant="primary" label="Have an account? Login"></Button>
-            <Button  label="Join us, it's free"></Button>
-            <Button variant="transparent" label="Forget password"></Button>
+            <Button variant="primary" label="Have an account? Login" onPress={()=>navigation.navigate("Login")}></Button>
+            <Button  label="Join us, it's free" onPress={()=> true}></Button>
+            <Button variant="transparent" label="Forget password" onPress={()=> true}></Button>
           </Box>
         </Box>
       </Box>

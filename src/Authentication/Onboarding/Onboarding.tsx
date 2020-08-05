@@ -71,8 +71,10 @@ const slideItems = [
   },
 ];
 
-export const assets = slideItems.map((slide)=>slide.picture.src)
-const Onboarding = ({navigation}:StackNavigationProps<Routes,"Onboarding">) => {
+export const assets = slideItems.map((slide) => slide.picture.src);
+const Onboarding = ({
+  navigation,
+}: StackNavigationProps<Routes, "Onboarding">) => {
   const { scrollHandler, x } = useScrollHandler();
   const scroll = useRef<Animated.ScrollView>(null);
   const backgroundColor = interpolateColor(x, {
@@ -99,7 +101,8 @@ const Onboarding = ({navigation}:StackNavigationProps<Routes,"Onboarding">) => {
                 style={{
                   width: width - theme.borderRedius.xl,
                   height:
-                    ((width - theme.borderRedius.xl) * picture.height) / picture.width,
+                    ((width - theme.borderRedius.xl) * picture.height) /
+                    picture.width,
                 }}
               />
             </Animated.View>
@@ -144,22 +147,23 @@ const Onboarding = ({navigation}:StackNavigationProps<Routes,"Onboarding">) => {
             }}
           >
             {slideItems.map(({ subTitle, description }, index) => {
-              const  last = index === slideItems.length - 1
-              return(
-              <SubSlide
-                key={index}
-                onPress={() => {
-                  if(last){
-                    navigation.navigate("Welcome");
-                  } else if (scroll.current) {
-                    scroll.current
-                      ?.getNode()
-                      .scrollTo({ x: width * (index + 1), animated: true });
-                  }
-                }}
-                {...{ subTitle, description,last }}
-              />
-            )})}
+              const last = index === slideItems.length - 1;
+              return (
+                <SubSlide
+                  key={index}
+                  onPress={() => {
+                    if (last) {
+                      navigation.navigate("Welcome");
+                    } else if (scroll.current) {
+                      scroll.current
+                        ?.getNode()
+                        .scrollTo({ x: width * (index + 1), animated: true });
+                    }
+                  }}
+                  {...{ subTitle, description, last }}
+                />
+              );
+            })}
           </Animated.View>
         </View>
       </View>
