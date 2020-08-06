@@ -13,7 +13,7 @@ const SIZE = theme.borderRedius.l * 2;
 const SocialIcon = ({children}:socialIconProps) => {
   return(
    
-    <Box  marginHorizontal="s" justifyContent="center" alignItems="center" backgroundColor="white" width={SIZE} height={SIZE} borderRadius={theme.borderRedius.l}>
+    <Box   marginHorizontal="s" justifyContent="center" alignItems="center" backgroundColor="white" width={SIZE} height={SIZE} borderRadius={theme.borderRedius.l}>
     { children}
       </Box>
      
