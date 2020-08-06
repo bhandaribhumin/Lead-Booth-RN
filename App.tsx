@@ -19,7 +19,7 @@ function App() {
     <ThemeProvider {...{theme}}>
     <LoadAssets {...{fonts, assets}}>
       <SafeAreaProvider >
-      <AuthenticationNavigator></AuthenticationNavigator>
+      <AuthenticationNavigator />
       </SafeAreaProvider>
     </LoadAssets>
     </ThemeProvider>
