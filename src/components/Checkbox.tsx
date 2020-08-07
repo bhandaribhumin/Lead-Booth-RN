@@ -18,16 +18,19 @@ const style = StyleSheet.create({
 });
 interface CheckboxProps {
   label?: string;
+  checked: boolean;
+  onChange: () => void;
 }
-const Checkbox = ({ label }: CheckboxProps) => {
-  const [checked, setChecked] = useState(false);
+const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
   const theme = useTheme<Theme>();
-
   return (
-    <RectButton style={{justifyContent:"center"}} onPress={() => setChecked((c) => !c)}>
+    <RectButton
+      style={{ justifyContent: "center" }}
+      onPress={() => onChange()}
+    >
       <Box flexDirection="row" alignItems="center">
         <Box
-        marginRight="s"
+          marginRight="s"
           borderRadius={theme.borderRedius.s}
           height={20}
           width={20}

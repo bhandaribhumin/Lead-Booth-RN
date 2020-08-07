@@ -13,34 +13,14 @@ import { useTheme } from "@shopify/restyle";
 
 interface TextInputProps extends RNTextInputProps {
   icon: string;
-  validator: (input: string) => boolean;
+  touched?:boolean;
+  error?:string;
 }
 const SIZE = theme.borderRedius.m * 2;
-const Valid = true;
-const Invalid = false;
-const Pristine = null;
-type inputState = typeof Valid | typeof Invalid | typeof Pristine;
-const TextInput = ({ icon, validator, ...props }: TextInputProps) => {
-  const [input, setInput] = useState("");
-  const [state, setState] = useState<inputState>(Pristine);
 
-  const reColor: keyof typeof theme.colors =
-    state === Pristine ? "text" : state === Valid ? "primary" : "danger2";
+const TextInput = ({ icon,  touched, error,...props }: TextInputProps) => {
+  const reColor = !touched ? "text" : (error?"danger2":"primary");
   const color = theme.colors[reColor];
-
-  const validate = () => {
-    const valid = validator(input);
-    setState(valid);
-  };
-  const onChangeText = (text: string) => {
-    setInput(text);
-    if (state !== Pristine) {
-      validate();
-    }
-  };
-  {
-    console.log(reColor);
-  }
   return (
     <Box
       flexDirection="row"
@@ -57,25 +37,23 @@ const TextInput = ({ icon, validator, ...props }: TextInputProps) => {
       <RNTextInput
         underlineColorAndroid="transparent"
         placeholderTextColor={color}
-        onBlur={validate}
-        {...{ onChangeText }}
         {...props}
       />
         </Box>
      
-        {(state === Valid || state === Invalid) && (
+        {touched && (
           <Box
             height={SIZE}
             width={SIZE}
             justifyContent="center"
             alignItems="center"
             marginRight="s"
-            backgroundColor={state === Valid ? "primary" : "danger2"}
+            backgroundColor={!error ? "primary" : "danger2"}
             borderRadius={theme.borderRedius.m}
           >
             <Icon
               size={16}
-              name={state == Valid ? "check" : "x"}
+              name={!error ? "check" : "x"}
               color="white"
             ></Icon>
           </Box>
