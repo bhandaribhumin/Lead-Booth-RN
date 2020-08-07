@@ -15,18 +15,19 @@ interface TextInputProps extends RNTextInputProps {
   icon: string;
   validator: (input: string) => boolean;
 }
-const SIZE = theme.borderRedius.l * 2;
+const SIZE = theme.borderRedius.m * 2;
 const Valid = true;
 const Invalid = false;
 const Pristine = null;
 type inputState = typeof Valid | typeof Invalid | typeof Pristine;
 const TextInput = ({ icon, validator, ...props }: TextInputProps) => {
-  const [state, setState] = useState<inputState>(Pristine);
-  const reColor: keyof typeof theme.colors =
-    state === Pristine ? "primary" : state === Valid ? "primary" : "danger";
-  const color
-= theme.colors[reColor];
   const [input, setInput] = useState("");
+  const [state, setState] = useState<inputState>(Pristine);
+
+  const reColor: keyof typeof theme.colors =
+    state === Pristine ? "text" : state === Valid ? "primary" : "danger2";
+  const color = theme.colors[reColor];
+
   const validate = () => {
     const valid = validator(input);
     setState(valid);
@@ -37,6 +38,9 @@ const TextInput = ({ icon, validator, ...props }: TextInputProps) => {
       validate();
     }
   };
+  {
+    console.log(reColor);
+  }
   return (
     <Box
       flexDirection="row"
@@ -49,23 +53,34 @@ const TextInput = ({ icon, validator, ...props }: TextInputProps) => {
       <Box padding="s">
         <Icon name={icon} size={16} {...{ color }}></Icon>
       </Box>
+      <Box flex={1}>
       <RNTextInput
         underlineColorAndroid="transparent"
         placeholderTextColor={color}
-        {...props}
+        onBlur={validate}
         {...{ onChangeText }}
-        onBlur={() => validate}
-      >
+        {...props}
+      />
+        </Box>
+     
         {(state === Valid || state === Invalid) && (
-          <Box height={SIZE} width={SIZE} borderRadius={theme.borderRedius.m}>
+          <Box
+            height={SIZE}
+            width={SIZE}
+            justifyContent="center"
+            alignItems="center"
+            marginRight="s"
+            backgroundColor={state === Valid ? "primary" : "danger2"}
+            borderRadius={theme.borderRedius.m}
+          >
             <Icon
               size={16}
-              name={state == state ? "check" : "x"}
+              name={state == Valid ? "check" : "x"}
               color="white"
             ></Icon>
           </Box>
         )}
-      </RNTextInput>
+    
     </Box>
   );
 };

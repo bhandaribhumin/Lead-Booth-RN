@@ -8,7 +8,7 @@ const theme = {
     white:"#FFFFFF",
     grey:"rgba(12,14,52,0.05)",
     button:"#0C0D34",
-    danger:"#FF0058",
+    danger2:"#FF0058",
     darkGray:"#8A8D90"
   },
   spacing: {

@@ -12,7 +12,7 @@ import React from "react";
 
 const emailValidator = (email: string) =>
   /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(email);
-  const passwordValidator = (password: string) => true;
+const passwordValidator = (password: string) => password.length >= 6;
 const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   const footer = (
     <>
@@ -24,7 +24,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             alert("sign up");
           }}
         >
-          <Box  flexDirection="row" justifyContent="center">
+          <Box flexDirection="row" justifyContent="center">
             <Text variant="button" color="white">
               Don't have an account?{" "}
             </Text>
@@ -46,18 +46,18 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
           User your credentials below and login to your account{" "}
         </Text>
         <Box marginBottom="l">
-        <TextInput
-          icon="mail"
-          placeholder="enter email"
-          validator={emailValidator}
-        ></TextInput>
-        </Box>
-        <Box >
           <TextInput
-          icon="lock"
-          placeholder="password"
-          validator={passwordValidator}
-        ></TextInput>
+            icon="mail"
+            placeholder="enter email"
+            validator={emailValidator}
+          ></TextInput>
+        </Box>
+        <Box>
+          <TextInput
+            icon="lock"
+            placeholder="password"
+            validator={passwordValidator}
+          ></TextInput>
         </Box>
       </Box>
     </Container>
