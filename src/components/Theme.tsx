@@ -10,7 +10,8 @@ export const theme = {
     grey:"rgba(12,14,52,0.05)",
     button:"#0C0D34",
     danger2:"#FF0058",
-    darkGray:"#8A8D90"
+    darkGray:"#8A8D90",
+    primaryLight:"#E7F9F7"
   },
   spacing: {
     s: 8,

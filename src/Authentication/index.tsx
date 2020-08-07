@@ -3,6 +3,7 @@ import Welcome, { assets as welcomeAssets } from "./Welcome";
 
 import ForgotPassword from "./ForgotPassword";
 import Login from "./Login";
+import PasswordChange from "./PasswordChange";
 import React from "react";
 import { Routes } from "../components/Navigation";
 import SignUp from "./SignUp";
@@ -19,5 +20,6 @@ return(
   <AuthenticationStack.Screen name="Login" component={Login}></AuthenticationStack.Screen>
   <AuthenticationStack.Screen name="SignUp" component={SignUp}></AuthenticationStack.Screen>
   <AuthenticationStack.Screen name="ForgotPassword" component={ForgotPassword}></AuthenticationStack.Screen>
+  <AuthenticationStack.Screen name="PasswordChange" component={PasswordChange}></AuthenticationStack.Screen>
 </AuthenticationStack.Navigator>);
 };

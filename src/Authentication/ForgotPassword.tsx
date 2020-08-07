@@ -29,7 +29,7 @@ const ForgotPassword = ({ navigation }: StackNavigationProps<Routes, "ForgotPass
   }= useFormik({
     validationSchema:ForgotPasswordSchema,
     initialValues:{ email: "" },
-    onSubmit:(values) => console.log(values)
+    onSubmit:() => navigation.navigate('PasswordChange')
   });
   const footer = <Footer title="Don't work?" action="Try another way" onPress={()=>Linking.openURL("mailto:bhandaribhumin@gmail.com")} />
 

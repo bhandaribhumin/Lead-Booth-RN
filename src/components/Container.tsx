@@ -55,12 +55,15 @@ return (
         >
         {children}
         </Box>
+       
       </Box>
-      <Box  backgroundColor="secondary"   >
+
+      <Box height={height*0.60}  justifyContent="center" alignItems="center" backgroundColor="secondary"   >
           {footer}
           <Box height={statusBarHeight}  />
       </Box>
     </Box>
+          
     </KeyboardAwareScrollView>
   );
 };
