@@ -1,26 +1,23 @@
+import { Box, useTheme } from "./Theme";
 import {
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
-  StyleSheet,
 } from "react-native";
-import React, { ReactNode, useState } from "react";
-import theme, { Box, Text, Theme } from "./Theme";
 
-import Animated from "react-native-reanimated";
 import { Feather as Icon } from "@expo/vector-icons";
-import { RectButton } from "react-native-gesture-handler";
-import { useTheme } from "@shopify/restyle";
+import React from "react";
 
 interface TextInputProps extends RNTextInputProps {
   icon: string;
-  touched?:boolean;
-  error?:string;
+  touched?: boolean;
+  error?: string;
 }
-const SIZE = theme.borderRedius.m * 2;
 
-const TextInput = ({ icon,  touched, error,...props }: TextInputProps) => {
-  const reColor = !touched ? "text" : (error?"danger2":"primary");
+const TextInput = React.forwardRef(({ icon, touched, error, ...props }: TextInputProps,ref) => {
+  const theme = useTheme();
+  const reColor = !touched ? "text" : error ? "danger2" : "primary";
   const color = theme.colors[reColor];
+  const SIZE = theme.borderRedius.m * 2;
   return (
     <Box
       flexDirection="row"
@@ -34,33 +31,29 @@ const TextInput = ({ icon,  touched, error,...props }: TextInputProps) => {
         <Icon name={icon} size={16} {...{ color }}></Icon>
       </Box>
       <Box flex={1}>
-      <RNTextInput
-        underlineColorAndroid="transparent"
-        placeholderTextColor={color}
-        {...props}
-      />
+        <RNTextInput
+        {...{ref}}
+          underlineColorAndroid="transparent"
+          placeholderTextColor={color}
+          {...props}
+        />
+      </Box>
+
+      {touched && (
+        <Box
+          height={SIZE}
+          width={SIZE}
+          justifyContent="center"
+          alignItems="center"
+          marginRight="s"
+          backgroundColor={!error ? "primary" : "danger2"}
+          borderRadius={theme.borderRedius.m}
+        >
+          <Icon size={16} name={!error ? "check" : "x"} color="white"></Icon>
         </Box>
-     
-        {touched && (
-          <Box
-            height={SIZE}
-            width={SIZE}
-            justifyContent="center"
-            alignItems="center"
-            marginRight="s"
-            backgroundColor={!error ? "primary" : "danger2"}
-            borderRadius={theme.borderRedius.m}
-          >
-            <Icon
-              size={16}
-              name={!error ? "check" : "x"}
-              color="white"
-            ></Icon>
-          </Box>
-        )}
-    
+      )}
     </Box>
   );
-};
+});
 TextInput.defaultProps = { variant: "default" };
 export default TextInput;

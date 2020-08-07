@@ -1,13 +1,14 @@
-import { Button, Text, theme } from "../../components";
+import { Button, Text, makeStyles } from "../../components";
 import { Dimensions, StyleSheet, View } from "react-native";
 
 import Animated from "react-native-reanimated";
 import React from "react";
+import { Theme } from "../../components/Theme";
 
 const { width, height } = Dimensions.get("window");
 export const SLIDER_HEIGHT = 0.61 * height;
 
-const style = StyleSheet.create({
+const useStyles = makeStyles((theme:Theme) => ({
   container: {
   flex:1,
   justifyContent:"center",
@@ -22,7 +23,7 @@ const style = StyleSheet.create({
     textAlign:"center",
     marginBottom:theme.spacing.m
   },
-});
+}));
 interface SubSlideProps {
     subTitle: string;
     description: boolean;
@@ -31,7 +32,7 @@ interface SubSlideProps {
     
 }
 const SubSlide = ({ subTitle,description,last,onPress }: SubSlideProps) => {
-
+  const style = useStyles();
   return (
     <View style={style.container}>
      <Text variant="title2" style={style.subTitle}>{subTitle}</Text>

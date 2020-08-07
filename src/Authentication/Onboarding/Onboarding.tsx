@@ -14,10 +14,11 @@ import {
   useScrollHandler,
   useValue,
 } from "react-native-redash";
+import { makeStyles, useTheme } from "../../components";
 
 import Dot from "./Dot";
 import SubSlide from "./SubSlide";
-import { theme } from "../../components";
+import { Theme } from "../../components/Theme";
 
 const { width } = Dimensions.get("window");
 const slideItems = [
@@ -75,6 +76,8 @@ export const assets = slideItems.map((slide) => slide.picture.src);
 const Onboarding = ({
   navigation,
 }: StackNavigationProps<Routes, "Onboarding">) => {
+  const theme = useTheme();
+  const style = useStyles();
   const { scrollHandler, x } = useScrollHandler();
   const scroll = useRef<Animated.ScrollView>(null);
   const backgroundColor = interpolateColor(x, {
@@ -171,7 +174,7 @@ const Onboarding = ({
   );
 };
 
-const style = StyleSheet.create({
+const useStyles = makeStyles((theme:Theme) => ({
   container: {
     flex: 1,
     backgroundColor: "white",
@@ -205,6 +208,6 @@ const style = StyleSheet.create({
     borderBottomRightRadius: theme.borderRedius.xl,
     overflow: "hidden",
   },
-});
+}));
 
 export default Onboarding;

@@ -4,15 +4,16 @@ import {
   Button,
   Checkbox,
   Container,
+  Footer,
   SocialLogin,
   Text,
   TextInput,
-} from "../../components";
-import { Routes, StackNavigationProps } from "../../components/Navigation";
+} from "./../components";
+import React,{useRef} from "react";
+import { Routes, StackNavigationProps } from "./../components/Navigation";
 
-import { Box } from "../../components/Theme";
-import { Formik } from "formik";
-import React from "react";
+import { Box } from "./../components/Theme";
+import { useFormik } from "formik";
 
 const LoginSchema = Yup.object().shape({
   password: Yup.string()
@@ -23,28 +24,22 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
-  const footer = (
-    <>
-      <SocialLogin />
-      <Box alignItems="center">
-        <Button
-          variant="transparent"
-          onPress={() => {
-            alert("sign up");
-          }}
-        >
-          <Box flexDirection="row" justifyContent="center">
-            <Text variant="button" color="white">
-              Don't have an account?{" "}
-            </Text>
-            <Text marginLeft="s" variant="button" color="primary">
-              Sign Up here{" "}
-            </Text>
-          </Box>
-        </Button>
-      </Box>
-    </>
-  );
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setFieldValues
+  }= useFormik({
+    validationSchema:LoginSchema,
+    initialValues:{ email: "", password: "",remember:true },
+    onSubmit:(values) => console.log(values)
+  });
+  const password = useRef<typeof TextInput>(null)
+  const footer = <Footer title="Don't have an account?" action="Sign Up here" onPress={()=>navigation.navigate("SignUp")} />
+
   return (
     <Container {...{ footer }}>
       <Box padding="xl">
@@ -54,23 +49,8 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
         <Text variant="body" textAlign="center">
           User your credentials below and login to your account{" "}
         </Text>
-
-        <Formik
-          initialValues={{ email: "", password: "",remember:true }}
-          validationSchema={LoginSchema}
-          onSubmit={(values) => console.log(values)}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            setFieldValues
-          }) => (
             <Box>
-              <Box marginBottom="l">
+              <Box marginBottom="m">
                 <TextInput
                   icon="mail"
                   placeholder="enter email"
@@ -78,16 +58,28 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                   onBlur={handleBlur}
                   error={errors.email}
                   touched={touched.email}
+                  autoCapitalize="none"
+                  autoCompleteType="email"
+                  returnKeyType="next"
+                  returnKeyLable="next"
+                  onSubmitEditing={()=>password.current?.focus()}
                 ></TextInput>
               </Box>
               <Box>
                 <TextInput
+                  ref={password}
                   icon="lock"
                   placeholder="password"
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur}
                   error={errors.password}
                   touched={touched.password}
+                  secureTextEntry
+                  autoCapitalize="none"
+                  autoCompleteType="password"
+                  returnKeyType="go"
+                  returnKeyLable="go"
+                  onSubmitEditing={()=>handleSubmit()}
                 ></TextInput>
               </Box>
               <Box flexDirection="row" justifyContent="space-between">
@@ -96,7 +88,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                   checked={values.remember}
                   onChange={()=>setFieldValues("remember",!values.remember)}
                 />
-                <Button variant="transparent">
+                <Button  onPress={()=>navigation.navigate("ForgotPassword")} variant="transparent">
                   <Text color="primary">Forgot Password</Text>
                 </Button>
               </Box>
@@ -108,8 +100,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                 ></Button>
               </Box>
             </Box>
-          )}
-        </Formik>
+       
       </Box>
     </Container>
   );

@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import { AuthenticationNavigator, assets as authenticationAssets } from './src/Authentication';
-import { LoadAssets, theme } from './src/components';
 
+import { LoadAssets } from './src/components';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {ThemeProvider} from '@shopify/restyle';
+import {theme} from "./src/components/Theme"
 
 const assets= [...authenticationAssets]
 const fonts = {

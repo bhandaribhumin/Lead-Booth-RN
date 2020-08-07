@@ -1,43 +1,50 @@
-import { Dimensions, Image, StatusBar, StyleSheet, Text } from "react-native";
-import { FaceBookSVG, GoogleSVG } from "./assets"
+import { Box, useTheme } from "./Theme";
+import { FaceBookSVG, GoogleSVG } from "./assets";
 import React, { ReactNode } from "react";
-import theme, { Box } from "./Theme";
+
+import { Dimensions } from "react-native";
 
 const { width } = Dimensions.get("window");
 const aspectRatio = 750 / 1125;
 const height = width * aspectRatio;
 interface socialIconProps {
-  children:ReactNode
+  children: ReactNode;
 }
-const SIZE = theme.borderRedius.l * 2;
-const SocialIcon = ({children}:socialIconProps) => {
-  return(
-   
-    <Box   marginHorizontal="s" justifyContent="center" alignItems="center" backgroundColor="white" width={SIZE} height={SIZE} borderRadius={theme.borderRedius.l}>
-    { children}
-      </Box>
-     
-  )
-}
-const SocialLogin = () => {
+const SocialIcon = ({ children }: socialIconProps) => {
+  const theme = useTheme();
+  const SIZE = theme.borderRedius.l * 2;
+
   return (
-    <Box style={style.container}>
-          <SocialIcon >
-            <GoogleSVG/>
-        </SocialIcon>
-        <SocialIcon >
-            <FaceBookSVG/>
-        </SocialIcon>
+    <Box
+      marginHorizontal="s"
+      justifyContent="center"
+      alignItems="center"
+      backgroundColor="white"
+      width={SIZE}
+      height={SIZE}
+      borderRadius={theme.borderRedius.l}
+    >
+      {children}
     </Box>
   );
 };
-const style = StyleSheet.create({
-  container:{
-    flexDirection:"row",
-    flex:1,
-    justifyContent:"center",
-    alignItems:"center",
-    paddingBottom:theme.borderRedius.l
-  }
-})
+const SocialLogin = () => {
+  const theme = useTheme();
+  return (
+    <Box
+      marginTop="m"
+      flexDirection="row"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <SocialIcon>
+        <GoogleSVG />
+      </SocialIcon>
+      <SocialIcon>
+        <FaceBookSVG />
+      </SocialIcon>
+    </Box>
+  );
+};
+
 export default SocialLogin;

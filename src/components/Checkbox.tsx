@@ -1,11 +1,10 @@
-import { Box, Text, Theme } from "./Theme";
+import { Box, Text, useTheme } from "./Theme";
 import React, { ReactNode, useState } from "react";
 
 import Animated from "react-native-reanimated";
 import { Feather as Icon } from "@expo/vector-icons";
 import { RectButton } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
-import { useTheme } from "@shopify/restyle";
 
 const style = StyleSheet.create({
   container: {
@@ -22,7 +21,7 @@ interface CheckboxProps {
   onChange: () => void;
 }
 const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
-  const theme = useTheme<Theme>();
+  const theme = useTheme();
   return (
     <RectButton
       style={{ justifyContent: "center" }}

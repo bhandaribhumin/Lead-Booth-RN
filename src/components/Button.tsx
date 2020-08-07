@@ -1,10 +1,9 @@
 import React, { ReactNode } from "react";
-import { Text, Theme } from "./Theme";
+import { Text, useTheme } from "./Theme";
 
 import Animated from "react-native-reanimated";
 import { RectButton } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
-import { useTheme } from "@shopify/restyle";
 
 const style = StyleSheet.create({
   container: {
@@ -22,7 +21,7 @@ interface ButtonProps {
   children: ReactNode;
 }
 const Button = ({ label, variant, onPress, children }: ButtonProps) => {
-  const theme = useTheme<Theme>();
+  const theme = useTheme();
   const backgroundColor =
     variant === "primary"
       ? theme.colors.primary
