@@ -13,7 +13,7 @@ interface TextInputProps extends RNTextInputProps {
   error?: string;
 }
 
-const TextInput = React.forwardRef(({ icon, touched, error, ...props }: TextInputProps,ref) => {
+const TextInput = React.forwardRef<RNTextInput,TextInputProps>(({ icon, touched, error, ...props },ref) => {
   const theme = useTheme();
   const reColor = !touched ? "text" : error ? "danger2" : "primary";
   const color = theme.colors[reColor];

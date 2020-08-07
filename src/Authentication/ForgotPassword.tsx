@@ -12,6 +12,7 @@ import React,{useRef} from "react";
 import { Routes, StackNavigationProps } from "./../components/Navigation";
 
 import { Box } from "./../components/Theme";
+import {Linking} from "react-native";
 import { useFormik } from "formik";
 
 const ForgotPasswordSchema = Yup.object().shape({
@@ -30,30 +31,30 @@ const ForgotPassword = ({ navigation }: StackNavigationProps<Routes, "ForgotPass
     initialValues:{ email: "" },
     onSubmit:(values) => console.log(values)
   });
-  const footer = <Footer title="Don't have an account?" action="Sign Up here" onPress={()=>true} />
+  const footer = <Footer title="Don't work?" action="Try another way" onPress={()=>Linking.openURL("mailto:bhandaribhumin@gmail.com")} />
 
   return (
     <Container {...{ footer }}>
-      <Box padding="xl">
+      <Box padding="xl" justifyContent="center" flex={1}>
         <Text variant="title1" textAlign="center" marginBottom="m">
-          Forgot Password
+          Forgot Password?
         </Text>
-        <Text variant="body" textAlign="center">
-          User your credentials below 
+        <Text variant="body" textAlign="center" marginBottom="m">
+        Enter email address associated with your account
         </Text>
             <Box>
-              <Box marginBottom="l">
+              <Box marginBottom="l"> 
                 <TextInput
                   icon="mail"
                   placeholder="enter email"
                   onChangeText={handleChange("email")}
-                  onBlur={handleBlur}
+                  onBlur={handleBlur("email")}
                   error={errors.email}
                   touched={touched.email}
                   autoCapitalize="none"
                   autoCompleteType="email"
-                  returnKeyType="next"
-                  returnKeyLable="next"
+                  returnKeyType="go"
+                  returnKeyLable="go"
                   onSubmitEditing={() => handleSubmit()}
                 ></TextInput>
               </Box>
@@ -63,7 +64,7 @@ const ForgotPassword = ({ navigation }: StackNavigationProps<Routes, "ForgotPass
                 <Button
                   variant="primary"
                   onPress={handleSubmit}
-                  label="Send Email"
+                  label="Reset Password"
                 ></Button>
               </Box>
             </Box>

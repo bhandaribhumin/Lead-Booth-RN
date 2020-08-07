@@ -55,7 +55,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
         <Text variant="title1" textAlign="center" marginBottom="m">
           Welcome SignUp
         </Text>
-        <Text variant="body" textAlign="center">
+        <Text variant="body" textAlign="center" marginBottom="m">
           User your credentials below and login to your account{" "}
         </Text>
         <Box>
@@ -64,7 +64,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
               icon="mail"
               placeholder="enter email"
               onChangeText={handleChange("email")}
-              onBlur={handleBlur}
+              onBlur={handleBlur("email")}
               error={errors.email}
               touched={touched.email}
               autoCapitalize="none"

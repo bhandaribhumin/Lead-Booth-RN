@@ -46,7 +46,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
         <Text variant="title1" textAlign="center" marginBottom="m">
           Welcome Back
         </Text>
-        <Text variant="body" textAlign="center">
+        <Text variant="body" textAlign="center" marginBottom="m">
           User your credentials below and login to your account{" "}
         </Text>
             <Box>
@@ -55,7 +55,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                   icon="mail"
                   placeholder="enter email"
                   onChangeText={handleChange("email")}
-                  onBlur={handleBlur}
+                  onBlur={handleBlur("email")}
                   error={errors.email}
                   touched={touched.email}
                   autoCapitalize="none"
@@ -71,7 +71,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                   icon="lock"
                   placeholder="password"
                   onChangeText={handleChange("password")}
-                  onBlur={handleBlur}
+                  onBlur={handleBlur("password")}
                   error={errors.password}
                   touched={touched.password}
                   secureTextEntry
