@@ -1,5 +1,6 @@
 import {
   Button,
+  Checkbox,
   Container,
   SocialLogin,
   Text,
@@ -58,6 +59,17 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             placeholder="password"
             validator={passwordValidator}
           ></TextInput>
+        </Box>
+        <Box flexDirection="row" justifyContent="space-between">
+          <Checkbox label="Remember me?" />
+          <Button variant="transparent">
+            <Text>Forgot Password</Text>
+          </Button>
+        </Box>
+        <Box alignItems="center" marginTop="l" justifyContent="center">
+          <Button variant="primary" onPress={() => true} label="login">
+           
+          </Button>
         </Box>
       </Box>
     </Container>
