@@ -23,8 +23,9 @@ type inputState = typeof Valid | typeof Invalid | typeof Pristine;
 const TextInput = ({ icon, validator, ...props }: TextInputProps) => {
   const [state, setState] = useState<inputState>(Pristine);
   const reColor: keyof typeof theme.colors =
-    state === Pristine ? "text" : state === Valid ? "primary" : "danger";
-  const color = theme.colors[reColor];
+    state === Pristine ? "primary" : state === Valid ? "primary" : "danger";
+  const color
+= theme.colors[reColor];
   const [input, setInput] = useState("");
   const validate = () => {
     const valid = validator(input);
