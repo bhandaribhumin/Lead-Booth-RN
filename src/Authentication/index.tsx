@@ -21,5 +21,6 @@ return(
   <AuthenticationStack.Screen name="SignUp" component={SignUp}></AuthenticationStack.Screen>
   <AuthenticationStack.Screen name="ForgotPassword" component={ForgotPassword}></AuthenticationStack.Screen>
   <AuthenticationStack.Screen name="PasswordChange" component={PasswordChange}></AuthenticationStack.Screen>
-</AuthenticationStack.Navigator>);
+</AuthenticationStack.Navigator>
+);
 };

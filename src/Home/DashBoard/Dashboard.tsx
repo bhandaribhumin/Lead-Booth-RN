@@ -4,13 +4,9 @@ import { Dimensions, Image, StyleSheet } from "react-native";
 import React from "react";
 
 const { width } = Dimensions.get("window");
-const picture = {
-  src: require("./../../../assets/slide/group.png"),
-  width: 768,
-  height: 1000,
-};
-export const assets = [picture.src];
-const Home = () => {
+
+
+const Dashboard = () => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">
@@ -26,4 +22,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default Home;
+export default Dashboard;

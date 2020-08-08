@@ -35,7 +35,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   }= useFormik({
     validationSchema:LoginSchema,
     initialValues:{ email: "", password: "",remember:true },
-    onSubmit:(values) => console.log(values)
+    onSubmit:(values) => navigation.navigate("Home")
   });
   const password = useRef<typeof TextInput>(null)
   const footer = <Footer title="Don't have an account?" action="Sign Up here" onPress={()=>navigation.navigate("SignUp")} />

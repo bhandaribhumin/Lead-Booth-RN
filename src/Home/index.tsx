@@ -1,13 +1,12 @@
-import Home from "./Home";
+import Dashboard from "./DashBoard";
 import React from "react";
-import { Routes } from "../components/Navigation";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
-const HomeNavigator=() => {
-    return (
+export const HomeNavigator=() => 
+  (
       <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="Dashboard" component={Dashboard} />
       </Drawer.Navigator>
     );
-  }
+  
