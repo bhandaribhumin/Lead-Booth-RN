@@ -1,12 +1,14 @@
-import Dashboard from "./DashBoard";
-import React from "react";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import * as React from "react";
 
-const Drawer = createDrawerNavigator();
-export const HomeNavigator=() => 
-  (
-      <Drawer.Navigator>
-        <Drawer.Screen name="Dashboard" component={Dashboard} />
-      </Drawer.Navigator>
-    );
-  
+import DashBoard from "./DashBoard";
+import { HomeRoutes } from "../components/Navigation";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
+const Drawer = createDrawerNavigator<HomeRoutes>();
+export const HomeNavigator = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="DashBoard" component={DashBoard} />
+    </Drawer.Navigator>
+  );
+};

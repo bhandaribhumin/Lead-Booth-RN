@@ -9,8 +9,8 @@ import {
   TextInput,
 } from "./../components";
 import React, { useRef } from "react";
-import { Routes, StackNavigationProps } from "./../components/Navigation";
 
+import { AuthNavigatonProps } from "./../components/Navigation";
 import { Box } from "./../components/Theme";
 import { useFormik } from "formik";
 
@@ -25,7 +25,7 @@ const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
+const SignUp = ({ navigation }:AuthNavigatonProps<"SignUp">) => {
   const { errors, touched, handleChange, handleBlur, handleSubmit } = useFormik(
     {
       validationSchema: SignUpSchema,
@@ -45,12 +45,12 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
 
   return (
     <Container pattern={1} {...{ footer }}>
-      <Box padding="xl">
+
         <Text variant="title1" textAlign="center" marginBottom="m">
-          Welcome SignUp
+         Create account
         </Text>
         <Text variant="body" textAlign="center" marginBottom="m">
-          User your credentials below and login to your account{" "}
+         Let's us know what your name, email and your password
         </Text>
         <Box>
           <Box marginBottom="m">
@@ -110,7 +110,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
             ></Button>
           </Box>
         </Box>
-      </Box>
+     
     </Container>
   );
 };

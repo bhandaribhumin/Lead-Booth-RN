@@ -58,6 +58,8 @@ const Container = ({ children, footer, pattern }: containerProps) => {
             borderRadius={theme.borderRedius.xl}
             borderTopLeftRadius={0}
             backgroundColor="white"
+            justifyContent="center"
+            padding="xl"
           >
             {children}
           </Box>

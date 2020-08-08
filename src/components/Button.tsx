@@ -21,7 +21,7 @@ interface ButtonProps {
   label?: string;
   variant: "default" | "primary" | "transparent";
   onPress: () => void;
-  children: ReactNode;
+  children?: ReactNode;
 }
 const Button = ({ label, variant, onPress, children }: ButtonProps) => {
   const theme = useTheme();

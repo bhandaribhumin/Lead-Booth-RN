@@ -1,7 +1,7 @@
 import { Box, Text, useTheme } from "../../components/Theme";
 import { Dimensions, Image, StyleSheet } from "react-native";
-import { Routes, StackNavigationProps } from "../../components/Navigation";
 
+import { AuthNavigatonProps } from "../../components/Navigation";
 import { Button } from "../../components";
 import React from "react";
 
@@ -12,7 +12,7 @@ const picture = {
   height: 1000,
 };
 export const assets = [picture.src];
-const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
+const Welcome = ({ navigation }: AuthNavigatonProps<"Welcome">) => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">
@@ -62,11 +62,12 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
               onPress={() => navigation.navigate("SignUp")}
             ></Button>
             <Box marginTop="s">
-            <Button
-              variant="transparent"
-              label="Forget password"
-              onPress={() => navigation.navigate("ForgotPassword")}
-            ></Button></Box>
+              <Button
+                variant="transparent"
+                label="Forget password"
+                onPress={() => navigation.navigate("ForgotPassword")}
+              ></Button>
+            </Box>
           </Box>
         </Box>
       </Box>

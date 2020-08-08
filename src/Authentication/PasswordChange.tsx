@@ -1,26 +1,19 @@
-import * as Yup from "yup";
-
 import {
   Button,
-  Checkbox,
   Container,
-  Footer,
   RoundedIcon,
   RoundedIconButton,
   Text,
-  TextInput,
 } from "./../components";
-import { Routes, StackNavigationProps } from "./../components/Navigation";
 
+import { AuthNavigatonProps } from "./../components/Navigation";
 import { Box } from "./../components/Theme";
-import { Feather as Icon } from "@expo/vector-icons";
-import { Linking } from "react-native";
 import React from "react";
 
 const SIZE = 80;
 const PasswordChange = ({
   navigation,
-}: StackNavigationProps<Routes, "PasswordChange">) => {
+}: AuthNavigatonProps<"PasswordChange">) => {
   const footer = (
     <Box flexDirection="row" justifyContent="center">
       <RoundedIconButton
@@ -36,14 +29,12 @@ const PasswordChange = ({
   return (
     <Container pattern={0} {...{ footer }}>
       <Box justifyContent="center" alignItems="center" flex={1}>
-       <RoundedIcon
-        name="check" 
-        size={SIZE}
-        backgroundColor="primaryLight"
-        color="primary"
-       />
-       
-        
+        <RoundedIcon
+          name="check"
+          size={SIZE}
+          backgroundColor="primaryLight"
+          color="primary"
+        />
         <Text variant="title1" textAlign="center" marginBottom="m">
           Your password was successfully changed
         </Text>

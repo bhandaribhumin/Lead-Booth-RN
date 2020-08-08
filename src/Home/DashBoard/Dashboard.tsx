@@ -1,12 +1,9 @@
 import { Box, Text, useTheme } from "../../components/Theme";
-import { Dimensions, Image, StyleSheet } from "react-native";
 
 import React from "react";
 
-const { width } = Dimensions.get("window");
-
-
-const Dashboard = () => {
+interface DashBoardProps {}
+const DashBoard = () => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">
@@ -15,11 +12,4 @@ const Dashboard = () => {
   );
 };
 
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-  },
-});
-
-export default Dashboard;
+export default DashBoard;
