@@ -26,19 +26,13 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
-  const {
-
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  
-  } = useFormik({
-    validationSchema: SignUpSchema,
-    initialValues: { email: "", password: "", passwordConfirmation: "" },
-    onSubmit: (values) => console.log(values),
-  });
+  const { errors, touched, handleChange, handleBlur, handleSubmit } = useFormik(
+    {
+      validationSchema: SignUpSchema,
+      initialValues: { email: "", password: "", passwordConfirmation: "" },
+      onSubmit: (values) => navigation.navigate("Home"),
+    }
+  );
   const password = useRef<typeof TextInput>(null);
   const passwordConfirmation = useRef<typeof TextInput>(null);
   const footer = (
@@ -50,7 +44,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   );
 
   return (
-    <Container pattern={1}  {...{ footer }}>
+    <Container pattern={1} {...{ footer }}>
       <Box padding="xl">
         <Text variant="title1" textAlign="center" marginBottom="m">
           Welcome SignUp
@@ -74,7 +68,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
               onSubmitEditing={() => password.current?.focus()}
             ></TextInput>
           </Box>
-          <Box  marginBottom="m">
+          <Box marginBottom="m">
             <TextInput
               ref={password}
               icon="lock"

@@ -15,7 +15,7 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
 });
-interface RoundedIconProps {
+export interface RoundedIconProps {
   name: string;
   size: number;
   color: keyof Theme["colors"];

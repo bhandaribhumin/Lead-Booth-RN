@@ -16,4 +16,5 @@ export type Routes = {
   SignUp:undefined;
   ForgotPassword:undefined;
   PasswordChange:undefined;
+Home:undefined;
 };

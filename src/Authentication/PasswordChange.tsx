@@ -3,9 +3,10 @@ import * as Yup from "yup";
 import {
   Button,
   Checkbox,
-  CloseButton,
   Container,
   Footer,
+  RoundedIcon,
+  RoundedIconButton,
   Text,
   TextInput,
 } from "./../components";
@@ -21,11 +22,13 @@ const PasswordChange = ({
   navigation,
 }: StackNavigationProps<Routes, "PasswordChange">) => {
   const footer = (
-      
-    <CloseButton
+    <RoundedIconButton 
+    name="x"
+     size={60}
+     backgroundColor="white"
+     color="secondary"
       onPress={() => navigation.pop()}
     />
-   
   );
 
   return (
