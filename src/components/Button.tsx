@@ -40,7 +40,8 @@ const Button = ({ label, variant, onPress, children }: ButtonProps) => {
         <TouchableWithoutFeedback
           style={{ backgroundColor }}
           {...{ onPress }}
-        >
+          
+        > 
           {children ? (
             children
           ) : (
