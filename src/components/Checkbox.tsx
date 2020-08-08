@@ -1,10 +1,9 @@
 import { Box, Text, useTheme } from "./Theme";
-import React, { ReactNode, useState } from "react";
+import { RectButton, TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-import Animated from "react-native-reanimated";
 import { Feather as Icon } from "@expo/vector-icons";
-import { RectButton } from "react-native-gesture-handler";
-import { StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet, } from "react-native";
 
 const style = StyleSheet.create({
   container: {
@@ -23,7 +22,7 @@ interface CheckboxProps {
 const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
   const theme = useTheme();
   return (
-    <RectButton
+    <TouchableWithoutFeedback
       style={{ justifyContent: "center" }}
       onPress={() => onChange()}
     >
@@ -43,7 +42,7 @@ const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
         </Box>
         <Text variant="button">{label}</Text>
       </Box>
-    </RectButton>
+    </TouchableWithoutFeedback>
   );
 };
 Checkbox.defaultProps = { variant: "default" };

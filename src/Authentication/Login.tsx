@@ -82,7 +82,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                   onSubmitEditing={()=>handleSubmit()}
                 ></TextInput>
               </Box>
-              <Box flexDirection="row" justifyContent="space-between">
+              <Box marginTop="m" flexDirection="row" justifyContent="space-between">
                 <Checkbox
                   label="Remember me?"
                   checked={values.remember}

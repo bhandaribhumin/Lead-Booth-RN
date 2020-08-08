@@ -11,7 +11,8 @@ export const theme = {
     button:"#0C0D34",
     danger2:"#FF0058",
     darkGray:"#8A8D90",
-    primaryLight:"#E7F9F7"
+    primaryLight:"#E7F9F7",
+    black:"#000000"
   },
   spacing: {
     s: 8,
