@@ -43,8 +43,7 @@ const ICON_SIZE:number = size*0.8;
         <Icon 
         size={ICON_SIZE} 
         {...{ name }} 
-        color="white"
-        style={{textAlign:"center"}}/>
+      />
       </Text>
     </Box>
   );

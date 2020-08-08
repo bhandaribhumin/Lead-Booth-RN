@@ -22,34 +22,32 @@ const PasswordChange = ({
   navigation,
 }: StackNavigationProps<Routes, "PasswordChange">) => {
   const footer = (
-    <RoundedIconButton 
-    name="x"
-     size={60}
-     backgroundColor="white"
-     color="secondary"
-      onPress={() => navigation.pop()}
-    />
+    <Box flexDirection="row" justifyContent="center">
+      <RoundedIconButton
+        name="x"
+        size={60}
+        backgroundColor="white"
+        color="secondary"
+        onPress={() => navigation.pop()}
+      />
+    </Box>
   );
 
   return (
-    <Container pattern={0}  {...{ footer }}>
+    <Container pattern={0} {...{ footer }}>
       <Box justifyContent="center" alignItems="center" flex={1}>
-      <Box
-        height={SIZE} width={SIZE}
+       <RoundedIcon
+        name="check" 
+        size={SIZE}
         backgroundColor="primaryLight"
-        borderRadius={SIZE / 2}
-        justifyContent="center"
-        alignItems="center"
-       marginBottom="xl"
-      >
-          <Text color="primary"  textAlign="center">
-              <Icon name="check" size={32}></Icon>
-              </Text>
-              </Box>
+        color="primary"
+       />
+       
+        
         <Text variant="title1" textAlign="center" marginBottom="m">
           Your password was successfully changed
         </Text>
-        <Text variant="body"  textAlign="center" marginBottom="m">
+        <Text variant="body" textAlign="center" marginBottom="m">
           <Text> Click This window and login again</Text>
         </Text>
 
