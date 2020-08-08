@@ -1,33 +1,20 @@
-import { Box, Text, Theme, useTheme } from "./Theme";
-import React, { ReactNode } from "react";
-import RoundedIcon,{RoundedIconProps} from "./RoundedIcon"
+import RoundedIcon, { RoundedIconProps } from "./RoundedIcon";
 
-import Animated from "react-native-reanimated";
-import { Feather as Icon } from "@expo/vector-icons";
+import React from "react";
 import { RectButton } from "react-native-gesture-handler";
-import { StyleSheet } from "react-native";
 
-const style = StyleSheet.create({
-  container: {
-    borderRadius: 25,
-    height: 50,
-    width: 245,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
-interface RoundedIconButtonProps extends RoundedIconProps{
-  onPress:()=> void;
+interface RoundedIconButtonProps extends RoundedIconProps {
+  onPress: () => void;
 }
-const RoundedIconButton = ({
-  onPress,...props
-}: RoundedIconButtonProps) => {
-  const theme = useTheme();
+const RoundedIconButton = ({ onPress, ...props }: RoundedIconButtonProps) => {
 
   return (
-    <RectButton {...{onPress}}>
-      <RoundedIcon {...props}/>
+    <RectButton {...{ onPress }}>
+      <RoundedIcon {...props} />
     </RectButton>
   );
+};
+RoundedIconButton.defaultProps = {
+  iconRatio: 0.7,
 };
 export default RoundedIconButton;

@@ -6,7 +6,7 @@ interface DashBoardProps {}
 const DashBoard = () => {
   const theme = useTheme();
   return (
-    <Box flex={1} backgroundColor="white">
+    <Box flex={1} backgroundColor="danger2">
         <Text>Home</Text>
     </Box>
   );

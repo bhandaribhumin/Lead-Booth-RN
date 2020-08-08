@@ -20,15 +20,17 @@ export interface RoundedIconProps {
   size: number;
   color: keyof Theme["colors"];
   backgroundColor: keyof Theme["colors"];
+  iconRatio:number;
 }
 const RoundedIcon = ({
   name,
   size,
   color,
   backgroundColor,
+  iconRatio
 }: RoundedIconProps) => {
+    const iconSize = size * 0.7;
   const theme = useTheme();
-const ICON_SIZE:number = size*0.8;
   return (
     <Box
       height={size}
@@ -39,13 +41,16 @@ const ICON_SIZE:number = size*0.8;
       {...{ backgroundColor }}
       borderRadius={size / 2}
     >
-      <Text style={{width:ICON_SIZE,height:ICON_SIZE}} {...{ color }}>
+      <Text style={{width:iconSize,height:iconSize}} {...{ color }}>
         <Icon 
-        size={ICON_SIZE} 
+        size={iconSize} 
         {...{ name }} 
       />
       </Text>
     </Box>
   );
 };
+RoundedIcon.defaultProps={
+    iconRatio : 0.7
+} 
 export default RoundedIcon;
