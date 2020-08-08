@@ -29,7 +29,7 @@ const PasswordChange = ({
   );
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={0}  {...{ footer }}>
       <Box justifyContent="center" alignItems="center" flex={1}>
       <Box
         height={SIZE} width={SIZE}

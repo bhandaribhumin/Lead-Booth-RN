@@ -7,4 +7,5 @@ export {default as TextInput } from "./TextInput";
 export {default as Checkbox } from "./Checkbox";
 export {default as Footer} from "./Footer";
 export {default as CloseButton} from "./CloseButton";
+export {default as RoundedIcon} from "./RoundedIcon";
 

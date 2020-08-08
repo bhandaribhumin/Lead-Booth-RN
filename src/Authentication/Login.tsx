@@ -41,7 +41,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   const footer = <Footer title="Don't have an account?" action="Sign Up here" onPress={()=>navigation.navigate("SignUp")} />
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={0} {...{ footer }}>
       <Box padding="xl">
         <Text variant="title1" textAlign="center" marginBottom="m">
           Welcome Back
