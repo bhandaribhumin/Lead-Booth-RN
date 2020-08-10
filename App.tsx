@@ -1,19 +1,19 @@
-import * as React from "react";
-
 import {
   AuthenticationNavigator,
   assets as authenticationAssets,
 } from "./src/Authentication";
+import { assets as HomeAssets, HomeNavigator } from "./src/Home";
+import React, {useEffect} from "react";
 
 import { AppRoutes } from "./src/components/Navigation";
-import { HomeNavigator } from "./src/Home";
 import { LoadAssets } from "./src/components";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import SplashScreen from 'react-native-splash-screen';
 import { ThemeProvider } from "@shopify/restyle";
 import { createStackNavigator } from "@react-navigation/stack";
 import { theme } from "./src/components/Theme";
 
-const assets = [...authenticationAssets];
+const assets = [...authenticationAssets,...HomeAssets];
 const fonts = {
   "SFProDisplay-Bold": require("./assets/fonts/SFProDisplay-Bold.ttf"),
   "SFProDisplay-Semibold": require("./assets/fonts/SFProDisplay-Semibold.ttf"),
@@ -23,6 +23,7 @@ const fonts = {
 
 const AppStack = createStackNavigator<AppRoutes>();
 function App() {
+
   return (
     <ThemeProvider {...{ theme }}>
       <LoadAssets {...{ fonts, assets }}>

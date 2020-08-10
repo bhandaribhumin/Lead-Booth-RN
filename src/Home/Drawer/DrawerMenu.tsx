@@ -4,14 +4,13 @@ import { Dimensions, Image, Platform, StyleSheet } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import React from "react";
 import { RectButton } from "react-native-gesture-handler";
-import { Theme } from "./../../components/Theme";
-import { useTheme } from "@shopify/restyle";
+import { useTheme } from "./../../components";
 
 const { width, height } = Dimensions.get("window");
 
 export interface DrawerMenuProps {
   icon: string;
-  color: keyof Theme["colors"];
+  color: any;
   screen: string;
   label: string;
 }

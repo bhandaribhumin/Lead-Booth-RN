@@ -12,6 +12,14 @@ export interface AuthNavigatonProps<
 >;
   route: RouteProp<AuthenticationRoutes, RouteName>;
 }
+
+export interface HomeNavigatonProps<
+  RouteName extends keyof HomeRoutes
+> {
+  navigation:  DrawerNavigationProp<HomeRoutes, RouteName>;
+  route: RouteProp<HomeRoutes, RouteName>;
+}
+ 
 export type AppRoutes = {
   Authentication: undefined;
   Home: undefined;

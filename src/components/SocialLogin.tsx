@@ -1,4 +1,10 @@
 import { Box, useTheme } from "./Theme";
+import {
+  ConfigureParams,
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-community/google-signin';
 import { FaceBookSVG, GoogleSVG } from "./assets";
 import React, { ReactNode } from "react";
 
@@ -10,6 +16,7 @@ const height = width * aspectRatio;
 interface socialIconProps {
   children: ReactNode;
 }
+
 const SocialIcon = ({ children }: socialIconProps) => {
   const theme = useTheme();
   const SIZE = theme.borderRedius.l * 2;

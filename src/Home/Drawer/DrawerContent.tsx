@@ -1,75 +1,70 @@
-import { Box, RoundedIconButton, Text } from "./../../components";
+import { Box, Header, RoundedIconButton, Text } from "./../../components";
 import { Dimensions, Image, StyleSheet } from "react-native";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 import DrawerMenu, { DrawerMenuProps } from "./DrawerMenu";
 
 import React from "react";
-import { theme } from "./../../components/Theme";
+import { useTheme } from "./../../components";
 
+export const assets = [
+  require("./../../components/assets/patterns/pattern1.png"),
+];
 const { width, height: cHeight } = Dimensions.get("window");
 
 interface DrawerContentProps {}
 export const DRAWER_WIDTH = width * 0.8;
-const aspectRatio = 360 / 847;
+const aspectRatio = 400 / 1025;
 const height = width * aspectRatio;
 const items: DrawerMenuProps[] = [
   {
     icon: "x",
-    label: "Outfit Ideas",
+    label: "Home",
     screen: "Dashboard",
     color: "primary",
   },
   {
     icon: "lock",
-    label: "Outfit Ideas",
+    label: "Logout",
     screen: "Dashboard2",
     color: "secondary",
   },
 ];
 const DrawerContent = () => {
-  //const theme = useTheme();
+  const navigation = useNavigation();
+  const theme = useTheme();
   const REDIUS_SIZE = theme.borderRedius.xl;
 
   return (
     <Box flex={1}>
       <Box flex={0.2} backgroundColor="white">
         <Box
-          style={{ ...StyleSheet.absoluteFillObject, paddingTop: 30 }}
+          style={{ ...StyleSheet.absoluteFillObject }}
           borderBottomRightRadius={REDIUS_SIZE}
-          justifyContent="space-between"
           backgroundColor="secondary"
-          flexDirection="row"
         >
-          <RoundedIconButton
-            name="x"
-            color="white"
-            backgroundColor="secondary"
-            size={24}
-            onPress={() => true}
-          />
-          <Text color="white">MY PROFILE</Text>
-          <RoundedIconButton
-            name="shopping-bag"
-            color="white"
-            size={24}
-            backgroundColor="secondary"
-            onPress={() => true}
-          />
+          <Header 
+          title="my profile" 
+          left={{ icon: "x", onPress:()=> navigation.dispatch(DrawerActions.closeDrawer) }} 
+          right={{ icon: "shopping-bag", onPress:()=>true }}
+          dark  />
         </Box>
       </Box>
       <Box flex={0.8} backgroundColor="white">
         <Box flex={1} backgroundColor="secondary"></Box>
         <Box flex={1} backgroundColor="primary"></Box>
+
         <Image
           style={{
             position: "absolute",
-            bottom: -height * 0.61,
+            bottom: -height * 0.55,
             left: 0,
             right: 0,
             width: DRAWER_WIDTH,
             height: height,
           }}
-          source={require("./../../components/assets/patterns/pattern1.png")}
+          source={assets[0]}
         />
+
         <Box
           style={{ ...StyleSheet.absoluteFillObject }}
           borderTopLeftRadius={REDIUS_SIZE}
@@ -80,8 +75,8 @@ const DrawerContent = () => {
         >
           <Box
             position="absolute"
-            left={DRAWER_WIDTH / 2 - 50}
-            top={-50}
+            left={DRAWER_WIDTH / 2 - 40}
+            top={-40}
             backgroundColor="primary"
             style={{ borderRadius: 50 }}
             width={80}
@@ -104,13 +99,15 @@ const DrawerContent = () => {
         backgroundColor="white"
         overflow="hidden"
         width={DRAWER_WIDTH}
-        height={height * 0.61}
+        height={height * 0.68}
       >
         <Image
           style={{
             ...StyleSheet.absoluteFillObject,
+            width: width,
+            height: height,
           }}
-          source={require("./../../components/assets/patterns/pattern1.png")}
+          source={assets[0]}
         />
       </Box>
     </Box>

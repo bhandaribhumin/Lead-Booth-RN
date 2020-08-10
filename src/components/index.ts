@@ -8,4 +8,5 @@ export {default as Checkbox } from "./Checkbox";
 export {default as Footer} from "./Footer";
 export {default as RoundedIconButton} from "./RoundedIconButton";
 export {default as RoundedIcon} from "./RoundedIcon";
+export {default as Header} from "./Header";
 

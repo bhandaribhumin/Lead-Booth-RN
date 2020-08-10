@@ -16,8 +16,8 @@ interface containerProps {
 }
 export const assets = [
   require("./assets/patterns/pattern1.png"),
-  require("./assets/patterns/pattern2.png"),
-  require("./assets/patterns/pattern3.jpg"),
+  require("./assets/patterns/pattern1.png"),
+  require("./assets/patterns/pattern1.png"),
 ] as const;
 const Container = ({ children, footer, pattern }: containerProps) => {
   const insets = useSafeAreaInsets();
@@ -49,11 +49,12 @@ const Container = ({ children, footer, pattern }: containerProps) => {
             source={asset}
             style={{
               ...StyleSheet.absoluteFillObject,
+              height,
               width,
-              top: -height * 0.61,
+              left:width*0.4,
             }}
           />
-          <Box
+         <Box
             flex={1}
             borderRadius={theme.borderRedius.xl}
             borderTopLeftRadius={0}
@@ -62,7 +63,7 @@ const Container = ({ children, footer, pattern }: containerProps) => {
             padding="xl"
           >
             {children}
-          </Box>
+          </Box> 
         </Box>
 
         <Box
@@ -70,9 +71,10 @@ const Container = ({ children, footer, pattern }: containerProps) => {
           justifyContent="center"
           alignItems="center"
           backgroundColor="secondary"
+         
         >
           {footer}
-          <Box height={statusBarHeight} />
+          <Box height={insets.bottom+20} />
         </Box>
       </Box>
     </KeyboardAwareScrollView>
