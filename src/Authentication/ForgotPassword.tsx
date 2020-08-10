@@ -2,24 +2,23 @@ import * as Yup from "yup";
 
 import {
   Button,
-  Checkbox,
   Container,
   Footer,
   Text,
   TextInput,
 } from "./../components";
-import React,{useRef} from "react";
-import { Routes, StackNavigationProps } from "./../components/Navigation";
 
+import { AuthNavigatonProps } from "./../components/Navigation";
 import { Box } from "./../components/Theme";
 import {Linking} from "react-native";
+import React from "react";
 import { useFormik } from "formik";
 
 const ForgotPasswordSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-const ForgotPassword = ({ navigation }: StackNavigationProps<Routes, "ForgotPassword">) => {
+const ForgotPassword = ({ navigation }: AuthNavigatonProps<"ForgotPassword">) => {
   const {
     errors,
     touched,
@@ -34,8 +33,8 @@ const ForgotPassword = ({ navigation }: StackNavigationProps<Routes, "ForgotPass
   const footer = <Footer title="Don't work?" action="Try another way" onPress={()=>Linking.openURL("mailto:bhandaribhumin@gmail.com")} />
 
   return (
-    <Container {...{ footer }}>
-      <Box padding="xl" justifyContent="center" flex={1}>
+    <Container pattern={2} {...{ footer }}>
+     
         <Text variant="title1" textAlign="center" marginBottom="m">
           Forgot Password?
         </Text>
@@ -69,7 +68,7 @@ const ForgotPassword = ({ navigation }: StackNavigationProps<Routes, "ForgotPass
               </Box>
             </Box>
        
-      </Box>
+     
     </Container>
   );
 };

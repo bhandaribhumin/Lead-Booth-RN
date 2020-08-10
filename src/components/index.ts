@@ -6,5 +6,7 @@ export {default as SocialLogin } from "./SocialLogin";
 export {default as TextInput } from "./TextInput";
 export {default as Checkbox } from "./Checkbox";
 export {default as Footer} from "./Footer";
-export {default as CloseButton} from "./CloseButton";
+export {default as RoundedIconButton} from "./RoundedIconButton";
+export {default as RoundedIcon} from "./RoundedIcon";
+export {default as Header} from "./Header";
 

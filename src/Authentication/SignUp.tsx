@@ -9,8 +9,8 @@ import {
   TextInput,
 } from "./../components";
 import React, { useRef } from "react";
-import { Routes, StackNavigationProps } from "./../components/Navigation";
 
+import { AuthNavigatonProps } from "./../components/Navigation";
 import { Box } from "./../components/Theme";
 import { useFormik } from "formik";
 
@@ -25,20 +25,14 @@ const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
-const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
-  const {
-
-    errors,
-    touched,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  
-  } = useFormik({
-    validationSchema: SignUpSchema,
-    initialValues: { email: "", password: "", passwordConfirmation: "" },
-    onSubmit: (values) => console.log(values),
-  });
+const SignUp = ({ navigation }:AuthNavigatonProps<"SignUp">) => {
+  const { errors, touched, handleChange, handleBlur, handleSubmit } = useFormik(
+    {
+      validationSchema: SignUpSchema,
+      initialValues: { email: "", password: "", passwordConfirmation: "" },
+      onSubmit: (values) => navigation.navigate("Home"),
+    }
+  );
   const password = useRef<typeof TextInput>(null);
   const passwordConfirmation = useRef<typeof TextInput>(null);
   const footer = (
@@ -50,13 +44,13 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   );
 
   return (
-    <Container {...{ footer }}>
-      <Box padding="xl">
+    <Container pattern={1} {...{ footer }}>
+
         <Text variant="title1" textAlign="center" marginBottom="m">
-          Welcome SignUp
+         Create account
         </Text>
         <Text variant="body" textAlign="center" marginBottom="m">
-          User your credentials below and login to your account{" "}
+         Let's us know what your name, email and your password
         </Text>
         <Box>
           <Box marginBottom="m">
@@ -74,7 +68,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
               onSubmitEditing={() => password.current?.focus()}
             ></TextInput>
           </Box>
-          <Box  marginBottom="m">
+          <Box marginBottom="m">
             <TextInput
               ref={password}
               icon="lock"
@@ -116,7 +110,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
             ></Button>
           </Box>
         </Box>
-      </Box>
+     
     </Container>
   );
 };

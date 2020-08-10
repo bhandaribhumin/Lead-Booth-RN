@@ -1,8 +1,11 @@
 import React, { ReactNode } from "react";
+import {
+  RectButton,
+  TouchableWithoutFeedback,
+} from "react-native-gesture-handler";
 import { Text, useTheme } from "./Theme";
 
 import Animated from "react-native-reanimated";
-import { RectButton } from "react-native-gesture-handler";
 import { StyleSheet } from "react-native";
 
 const style = StyleSheet.create({
@@ -18,7 +21,7 @@ interface ButtonProps {
   label?: string;
   variant: "default" | "primary" | "transparent";
   onPress: () => void;
-  children: ReactNode;
+  children?: ReactNode;
 }
 const Button = ({ label, variant, onPress, children }: ButtonProps) => {
   const theme = useTheme();
@@ -30,16 +33,38 @@ const Button = ({ label, variant, onPress, children }: ButtonProps) => {
       : theme.colors.grey;
   const color =
     variant === "primary" ? theme.colors.white : theme.colors.button;
+
   return (
-    <RectButton style={[style.container, { backgroundColor }]} {...{ onPress }}>
-      {children ? (
-        children
+    <>
+      {variant === "transparent" ? (
+        <TouchableWithoutFeedback
+          style={{ backgroundColor }}
+          {...{ onPress }}
+          
+        > 
+          {children ? (
+            children
+          ) : (
+            <Text variant="button" style={{ color }}>
+              {label}
+            </Text>
+          )}
+        </TouchableWithoutFeedback>
       ) : (
-        <Text variant="button" style={{ color }}>
-          {label}
-        </Text>
+        <RectButton
+          style={[style.container, { backgroundColor }]}
+          {...{ onPress }}
+        >
+          {children ? (
+            children
+          ) : (
+            <Text variant="button" style={{ color }}>
+              {label}
+            </Text>
+          )}
+        </RectButton>
       )}
-    </RectButton>
+    </>
   );
 };
 Button.defaultProps = { variant: "default" };

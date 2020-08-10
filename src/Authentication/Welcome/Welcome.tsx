@@ -1,7 +1,7 @@
 import { Box, Text, useTheme } from "../../components/Theme";
 import { Dimensions, Image, StyleSheet } from "react-native";
-import { Routes, StackNavigationProps } from "../../components/Navigation";
 
+import { AuthNavigatonProps } from "../../components/Navigation";
 import { Button } from "../../components";
 import React from "react";
 
@@ -12,7 +12,7 @@ const picture = {
   height: 1000,
 };
 export const assets = [picture.src];
-const Welcome = ({navigation}:StackNavigationProps<Routes,"Welcome">) => {
+const Welcome = ({ navigation }: AuthNavigatonProps<"Welcome">) => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">
@@ -52,9 +52,22 @@ const Welcome = ({navigation}:StackNavigationProps<Routes,"Welcome">) => {
             <Text variant="body" textAlign="center">
               Login to your account below or signup for an amazing experience
             </Text>
-            <Button variant="primary" label="Have an account? Login" onPress={()=>navigation.navigate("Login")}></Button>
-            <Button  label="Join us, it's free"  onPress={()=>navigation.navigate("SignUp")}></Button>
-            <Button variant="transparent" label="Forget password" onPress={()=> navigation.navigate("ForgotPassword")}></Button>
+            <Button
+              variant="primary"
+              label="Have an account? Login"
+              onPress={() => navigation.navigate("Login")}
+            ></Button>
+            <Button
+              label="Join us, it's free"
+              onPress={() => navigation.navigate("SignUp")}
+            ></Button>
+            <Box marginTop="s">
+              <Button
+                variant="transparent"
+                label="Forget password"
+                onPress={() => navigation.navigate("ForgotPassword")}
+              ></Button>
+            </Box>
           </Box>
         </Box>
       </Box>

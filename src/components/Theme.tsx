@@ -4,14 +4,17 @@ import { createBox, createText, useTheme as useReTheme } from '@shopify/restyle'
 export const theme = {
   colors: {
     primary:"#2CB9B0",
-    secondary:"#0C0D34",
+    secondary:"#073b4c",
     text:"rgba(12,13,52,0.7)",
     white:"#FFFFFF",
     grey:"rgba(12,14,52,0.05)",
     button:"#0C0D34",
     danger2:"#FF0058",
     darkGray:"#8A8D90",
-    primaryLight:"#E7F9F7"
+    primaryLight:"#E7F9F7",
+    black:"#000000",
+    lightGray:"#FAFAFA",
+    lightBlue: "#06d6a0"
   },
   spacing: {
     s: 8,
@@ -55,7 +58,13 @@ export const theme = {
         fontSize: 15,
         fontFamily: "SFProDisplay-Medium",
         color: "text",
-    }
+    },
+    header:{
+      fontSize: 12,
+      lineHeight:24,
+      fontFamily: "SFProDisplay-Semibold",
+      color: "secondary",
+  }
   },
   breakpoints: { },
 };
