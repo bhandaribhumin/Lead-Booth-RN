@@ -27,6 +27,7 @@
     "android": {
       "package": "com.rti.LeadBooth",
       "versionCode": 1
-    }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
