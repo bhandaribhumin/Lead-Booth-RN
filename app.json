@@ -25,7 +25,7 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
-      "package": "com.rti.LeadBooth",
+      "package": "com.LeadBooth",
       "versionCode": 1
     },
     "entryPoint": "node_modules/expo/AppEntry.js"
